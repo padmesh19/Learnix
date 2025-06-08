@@ -6,6 +6,8 @@ import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import Footer from "../../components/student/Footer";
 import YouTube from "react-youtube";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -16,20 +18,58 @@ const CourseDetails = () => {
   const {
     allCourses,
     calculateRating,
-    calculateNoOfCLectures,
+    calculateNoOfLectures,
     calculateChapterTime,
     calculateCourseDuration,
     currency,
+    backendUrl,
+    userData,
+    getToken,
   } = useContext(AppContext);
 
-  const fetCourseData = async () => {
-    const findCourse = allCourses.find((course) => course._id === id);
-    setCourseData(findCourse);
+  const fetchCourseData = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + '/api/course/' + id)
+      if (data.success) {
+        setCourseData(data.courseData)
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   };
 
+  const enrollCourse = async () => {
+    try {
+      if (!userData) {
+        return toast.warn('Login to Enroll')
+      }
+      if(isAlreadyEnrolled){
+        return toast.warn("Already Enrolled");
+      }
+      const token = await getToken();
+      const {data} = await axios.post(backendUrl + '/api/user/purchase', {courseId:courseData._id}, {headers:{Authorization:`Bearer ${token}`}})
+      if (data.success) {
+        const { session_url } = data;
+        window.location.replace(session_url)
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   useEffect(() => {
-    fetCourseData();
-  }, [allCourses]);
+    fetchCourseData();
+  }, []);
+
+  useEffect(() => {
+    if (userData && courseData) {
+      setIsAlreadyEnrolled(userData.enrolledCourses.includes(courseData._id))
+    }
+  }, [userData, courseData]);
 
   const togglesection = (index) => {
     setOpenSections((prev) => ({
@@ -40,7 +80,7 @@ const CourseDetails = () => {
 
   return courseData ? (
     <>
-      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-center md:items-start justify-between md:px-28 px-8 md:pt-20 pt-10 text-left">
+      <div className="flex flex-1 md:flex-row flex-col-reverse gap-10 relative items-center md:items-start justify-between sm:px-10 md:px-16 md:pt-16 pt-10 text-left">
         <div className="absolute top-0 left-0 w-full min-h-96 z-10 bg-gradient-to-b from-cyan-100/70"></div>
 
         {/* Left Section */}
@@ -81,7 +121,9 @@ const CourseDetails = () => {
           </div>
           <p className="text-sm">
             Course by{" "}
-            <span className="text-blue-600 underline"> GreatStack</span>
+            <span className="text-blue-600 underline">
+              {courseData.educator.name}
+            </span>
           </p>
 
           <div className="pt-8 text-gray-800">
@@ -121,11 +163,11 @@ const CourseDetails = () => {
                   >
                     <ul className="list-disc md:pl-10 pl-4 pr-4 py-2 text-gray-600 border-t border-gray-300">
                       {chapter.chapterContent.map((lecture, i) => (
-                        <li key={i} className="flex items-start gap-2 py-1">
+                        <li key={i} className="flex items-center gap-2 py-1">
                           <img
                             src={assets.play_icon}
                             alt="play icon"
-                            className="w-4 h-4 mt-1"
+                            className="w-4 h-4"
                           />
                           <div className="flex items-center justify-between w-full text-gray-800 text-xs md:text-default">
                             <p>{lecture.lectureTitle}</p>
@@ -174,7 +216,7 @@ const CourseDetails = () => {
         </div>
 
         {/* Right Section */}
-        <div className="course-card z-10 custom-card rounded-t md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[420px]">
+        <div className="course-card w-full z-10 custom-card rounded-t md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[350px]">
           {playerData ? (
             <YouTube
               videoId={playerData.videoId}
@@ -186,7 +228,7 @@ const CourseDetails = () => {
               iframeClassName="w-full aspect-video"
             />
           ) : (
-            <img src={courseData.courseThumbnail} alt="" />
+            <img src={courseData.courseThumbnail} alt="" className="aspect-video" />
           )}
           <div className="p-5">
             <div className="flex items-center gap-2">
@@ -230,10 +272,13 @@ const CourseDetails = () => {
               <div className="h-4 w-px bg-gray-500/40"></div>
               <div className="flex items-center gap-1">
                 <img src={assets.lesson_icon} alt="lesson icon" />
-                <p>{calculateNoOfCLectures(courseData)} lessons</p>
+                <p>{calculateNoOfLectures(courseData)} lessons</p>
               </div>
             </div>
-            <button className="md:mt-6 mt-4 w-full py-3 rounded bg-blue-600 text-white font-medium">
+            <button
+              onClick={enrollCourse}
+              className="md:mt-6 mt-4 w-full py-3 rounded bg-blue-600 text-white font-medium"
+            >
               {isAlreadyEnrolled ? "Already Enrolled" : "Enroll Now"}
             </button>
             <div className="pt-6">
@@ -251,7 +296,6 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   ) : (
     <Loading />

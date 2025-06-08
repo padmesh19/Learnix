@@ -2,7 +2,7 @@ import {clerkClient} from '@clerk/express'
 import Course from '../models/Course.js';
 import {v2 as cloudinary} from 'cloudinary'
 import { Purchase } from '../models/Purchase.js';
-
+import User from '../models/User.js'
 
 
 //update role to educator
@@ -26,14 +26,12 @@ export const addCourse = async (req, res) => {
         const { courseData } = req.body;
         const imageFile = req.file;
         const educatorId = req.auth.userId;
-
         if (!imageFile) {
             return res.json({success:false, message:'Thumbnail Not Attached'})
         }
 
         const parsedCourseData = await JSON.parse(courseData)
         parsedCourseData.educator = educatorId;
-        console.log(parsedCourseData)
         const newCourse = await Course.create(parsedCourseData);
         const imageUpload = await cloudinary.uploader.upload(imageFile.path)
         newCourse.courseThumbnail = imageUpload.secure_url
@@ -85,7 +83,7 @@ export const educatorDashboardData = async (req,res) => {
                 _id: { $in: course.enrolledStudents }
             }, 'name imageUrl');
 
-            students.forEach(students => {
+            students.forEach(student => {
                 enrolledStudentsData.push({
                     courseTitle:course.courseTitle, student
                 })

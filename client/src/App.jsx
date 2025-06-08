@@ -13,12 +13,15 @@ import MyCourses from './pages/educator/MyCourses'
 import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar'
 import "quill/dist/quill.snow.css"
+import {ToastContainer} from 'react-toastify'
+import Footer from './components/student/Footer'
 
 const App = () => {
 
   const isEducatorRoute = useMatch('/educator/*')
   return (
-    <div className="default min-h-screen bg-white">
+    <div className="default min-h-screen flex flex-col bg-white">
+      <ToastContainer />
       {!isEducatorRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,6 +38,7 @@ const App = () => {
           <Route path="student-enrolled" element={<StudentsEnrolled />} />
         </Route>
       </Routes>
+      {!isEducatorRoute && <Footer />}
     </div>
   );
 }
