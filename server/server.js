@@ -17,7 +17,7 @@ await connectDB()
 await connectCloudinary()
 
 // Middlewares
-app.use(cors());
+app.use(cors(process.env.FRONTEND_URL));
 app.use(clerkMiddleware())
 
 // Routes
