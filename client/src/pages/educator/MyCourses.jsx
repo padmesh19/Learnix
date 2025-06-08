@@ -30,15 +30,15 @@ const MyCourses = () => {
       <div className="w-full">
         <h2 className="pb-4 text-lg font-medium">MyCourses</h2>
         <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/50 shadow-lg">
-          <table className="md:table-auto table-fixed w-full overflow-hidden">
+          <table className="md:table-auto table-fixed w-full overflow-scroll">
             <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left">
               <tr>
-                <th className="px-4 py-3 font-semibold truncate">
+                <th className="px-2 py-3 font-semibold truncate">
                   All Courses
                 </th>
-                <th className="px-4 py-3 font-semibold truncate">Earnings</th>
-                <th className="px-4 py-3 font-semibold truncate">Students</th>
-                <th className="px-4 py-3 font-semibold truncate">
+                <th className="px-2 py-3 font-semibold truncate">Earnings</th>
+                <th className="px-2 py-3 font-semibold truncate">Students</th>
+                <th className="px-2 py-3 font-semibold truncate">
                   Published On
                 </th>
               </tr>
@@ -46,7 +46,7 @@ const MyCourses = () => {
             <tbody className="text-sm text-gray-500">
               {courses.map((course) => (
                 <tr key={course._id} className="border-b border-gray-500/20">
-                  <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
+                  <td className="md:px-2 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                     <img
                       src={course.courseThumbnail}
                       alt="Course Image"
@@ -56,7 +56,7 @@ const MyCourses = () => {
                       {course.courseTitle}
                     </span>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-2 py-3">
                     {currency}{" "}
                     {Math.floor(
                       course.enrolledStudents.length *
@@ -64,10 +64,10 @@ const MyCourses = () => {
                           (course.discount * course.coursePrice) / 100)
                     )}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-2 py-3">
                     {course.enrolledStudents.length}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-2 py-3">
                     {new Date(course.createdAt).toLocaleDateString()}
                   </td>
                 </tr>

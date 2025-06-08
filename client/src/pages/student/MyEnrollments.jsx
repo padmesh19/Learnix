@@ -57,7 +57,7 @@ const MyEnrollments = () => {
 
   return (
     <>
-      <div className="sm:px-10 md:px-16 md:pt-16 pt-10 flex-1">
+      <div className="sm:px-10 md:px-16 md:pt-16 px-4 pt-10 flex-1">
         <h1 className="text-2xl font-semibold">My Enrollments</h1>
         <table className="md:table-auto table-fixed w-full overflow-hidden border border-gray-800 my-10">
           <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left max-sm:hidden">
@@ -70,7 +70,14 @@ const MyEnrollments = () => {
           </thead>
           <tbody className="text-gray-700">
             {enrolledCourses.map((course, index) => (
-              <tr key={index} className={`border-b ${enrolledCourses.length === index+1 ?'border-gray-500' :' border-gray-500/20' }`}>
+              <tr
+                key={index}
+                className={`border-b ${
+                  enrolledCourses.length === index + 1
+                    ? "border-gray-500"
+                    : " border-gray-500/20"
+                }`}
+              >
                 <td className="md:px-4 pl-2 md:pl-4 py-3 flex  items-center space-x-3">
                   <img
                     src={course.courseThumbnail}

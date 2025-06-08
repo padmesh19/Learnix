@@ -80,7 +80,7 @@ const CourseDetails = () => {
 
   return courseData ? (
     <>
-      <div className="flex flex-1 md:flex-row flex-col-reverse gap-10 relative items-center md:items-start justify-between sm:px-10 md:px-16 md:pt-16 pt-10 text-left">
+      <div className="flex flex-1 md:flex-row flex-col-reverse gap-10 relative items-center md:items-start justify-between sm:px-10 md:px-16 md:pt-16 px-4 pt-10 text-left">
         <div className="absolute top-0 left-0 w-full min-h-96 z-10 bg-gradient-to-b from-cyan-100/70"></div>
 
         {/* Left Section */}
@@ -228,7 +228,11 @@ const CourseDetails = () => {
               iframeClassName="w-full aspect-video"
             />
           ) : (
-            <img src={courseData.courseThumbnail} alt="" className="aspect-video" />
+            <img
+              src={courseData.courseThumbnail}
+              alt=""
+              className="aspect-video"
+            />
           )}
           <div className="p-5">
             <div className="flex items-center gap-2">
