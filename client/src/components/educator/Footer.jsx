@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 
 const Footer = () => {
   return (
-    <footer className="flex md:flex-row flex-col-reverse items-center justify-between text-left w-full px-8 border-t">
+    <footer className="flex md:flex-row flex-col-reverse items-center justify-between text-left w-full px-8 border-t bg-slate-100">
       <div className="flex items-center gap-4">
         <img
           className="hidden md:block w-20"
@@ -12,7 +12,7 @@ const Footer = () => {
         />
         <div className="hidden md:block h-7 w-px bg-gray-500/60"></div>
         <p className="py-4 text-center text-xs md:text-sm text-gray-500">
-          Copyright 2025 © Padmesh. All Right Reserved.
+          Copyright 2025 © Learnix. All Right Reserved.
         </p>
       </div>
       <div className="flex items-center gap-3 max-md:mt-4">

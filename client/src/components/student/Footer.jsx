@@ -3,14 +3,14 @@ import { assets } from "../../assets/assets";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 sm:px-10 md:px-16 text-left w-full mt-10">
+    <footer className="bg-gray-900 sm:px-10 md:px-16 px-8 text-left w-full mt-10">
       <div className="flex flex-col md:flex-row items-start w-full justify-between gap-10 md:gap-16 py-10 border-b border-white/30">
         <div className="flex flex-col md:items-start items-center  w-full">
           <img src={assets.logo_dark} className="w-28 lg:w-32" alt="logo" />
           <p className="mt-6 text-center md:text-left text-sm text-white/80">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quis
-            aspernatur fugit quod asperiores modi, perferendis labore nihil
-            error sit, provident maxime molestiae.
+            Learnix is a modern Learning Management System designed to make
+            online education simple, interactive, and accessible. Learnix empowers students and educators
+            to connect and grow — anytime, anywhere.
           </p>
         </div>
         <div className="flex flex-col md:items-start items-center md:border-none md:pt-0 border-t pt-4 border-white/80 w-full">

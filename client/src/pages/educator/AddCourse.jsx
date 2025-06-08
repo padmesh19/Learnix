@@ -133,10 +133,10 @@ const AddCourse = () => {
   }
 
   return (
-    <div className="h-screen overflow-scroll flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0">
+    <div className="h-screen overflow-scroll flex flex-col items-start justify-between md:p-8 pb-8 p-4 pt-8 ">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 max-w-md w-full text-gray-500"
+        className="flex flex-col gap-4 max-w-md w-full bg-white p-4 rounded-lg shadow-lg border border-gray-500/50 text-gray-700"
       >
         <div className="flex flex-col gap-1">
           <p>Course Title</p>
@@ -151,7 +151,7 @@ const AddCourse = () => {
         </div>
         <div className="flex flex-col gap-1">
           <p>Course Description</p>
-          <div ref={editorRef}></div>
+          <div ref={editorRef} className=" outline rounded-sm"></div>
         </div>
 
         <div className="flex items-center justify-between flex-wrap">
@@ -272,7 +272,7 @@ const AddCourse = () => {
                   ))}
                   <div
                     onClick={() => handleLecture("add", chapter.chapterId)}
-                    className="inline-flex bg-gray-100 p-2 rounded cursor-pointer mt-2"
+                    className="inline-flex bg-gray-200 p-2 rounded cursor-pointer mt-2"
                   >
                     + Add Lecture
                   </div>
@@ -282,7 +282,7 @@ const AddCourse = () => {
           ))}
           <div
             onClick={() => handleChapter("add")}
-            className="flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer"
+            className="flex justify-center items-center bg-blue-200 p-2 rounded-sm cursor-pointer"
           >
             + Add Chapter
           </div>

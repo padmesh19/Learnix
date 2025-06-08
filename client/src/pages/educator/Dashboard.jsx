@@ -33,7 +33,7 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col items-start justify-between gap-8 md:p-8 md:pb-0 p-4 pt-8 pb-0">
       <div className="space-y-5">
         <div className="flex flex-wrap gap-5 items-center">
-          <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+          <div className="flex items-center gap-3 shadow-card border border-blue-500 bg-white/90 shadow-lg p-4 w-56 rounded-md">
             <img src={assets.patients_icon} alt="patients_icon" />
             <div>
               <p className="text-2xl font-medium text-gray-600">
@@ -43,7 +43,7 @@ const Dashboard = () => {
               <p className="text-base text-gray-500">Total Enrollment</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+          <div className="flex items-center gap-3 shadow-card border border-blue-500 bg-white/90 shadow-lg p-4 w-56 rounded-md">
             <img src={assets.appointments_icon} alt="appointments_icon" />
             <div>
               <p className="text-2xl font-medium text-gray-600">
@@ -53,7 +53,7 @@ const Dashboard = () => {
               <p className="text-base text-gray-500">Total Courses</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md">
+          <div className="flex items-center gap-3 shadow-card border border-blue-500 bg-white/90 shadow-lg p-4 w-56 rounded-md">
             <img src={assets.earning_icon} alt="earning_icon" />
             <div>
               <p className="text-2xl font-medium text-gray-600">
@@ -66,7 +66,7 @@ const Dashboard = () => {
 
         <div>
           <h2 className="pb-4 text-lg font-medium">Latest Enrollments</h2>
-          <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
+          <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white shadow-lg border border-gray-500">
             <table className="table-fixed md:table-auto w-full overflow-hidden">
               <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left">
                 <tr>
