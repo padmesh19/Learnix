@@ -7,7 +7,7 @@ const CoursesSection = () => {
 
   const { allCourses } = useContext(AppContext);
   return (
-    <div className="py-16 md:px-40 sm:px-16 px-8 ">
+    <div className="sm:px-10 md:px-16 md:pt-16 px-4 pt-10">
       <h2 className="text-3xl font-medium text-gray-800">
         Learn from the best
       </h2>
@@ -17,8 +17,18 @@ const CoursesSection = () => {
         deliver results.
       </p>
 
-      <div className="grid place-items-center grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4 px-4 md:px-0 my-10 md:my-16 max-w-screen-xl mx-auto">
-        {allCourses.slice(0, 8).map((course, index) => (
+      <div
+        className={`grid grid-cols-1 ${
+          allCourses.length > 3
+            ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+            : allCourses.length > 2
+            ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
+            : allCourses.length > 1
+            ? "sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2"
+            : "sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1"
+        } gap-6 px-4 md:px-0 my-10 md:my-16 justify-items-center`}
+      >
+        {allCourses.slice(0,8).map((course, index) => (
           <CourseCard key={index} course={course} />
         ))}
       </div>
