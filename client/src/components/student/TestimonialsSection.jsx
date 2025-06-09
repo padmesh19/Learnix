@@ -18,7 +18,7 @@ const TestimonialsSection = () => {
           >
             <div className="flex items-center gap-4 px-5 py-4 bg-gray-500/10">
               <img
-                className="h-12 w-12 rounded-full"
+                className="h-12 w-12 aspect-square rounded-full"
                 src={testimonial.image}
                 alt={testimonial.name}
               />

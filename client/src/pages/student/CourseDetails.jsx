@@ -16,7 +16,6 @@ const CourseDetails = () => {
   const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
   const [playerData, setPlayerData] = useState(null);
   const {
-    allCourses,
     calculateRating,
     calculateNoOfLectures,
     calculateChapterTime,
@@ -219,6 +218,7 @@ const CourseDetails = () => {
         <div className="course-card w-full z-10 custom-card rounded-t md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[350px]">
           {playerData ? (
             <YouTube
+              key={playerData.lectureUrl}
               videoId={playerData.videoId}
               opts={{
                 playerVars: {

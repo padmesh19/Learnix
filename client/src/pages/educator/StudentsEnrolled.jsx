@@ -49,7 +49,8 @@ const StudentsEnrolled = () => {
             </tr>
           </thead>
           <tbody className="text-sm text-gray-500">
-            {enrolledStudents.map((item, index) => (
+            {enrolledStudents && enrolledStudents.length > 0 ? (
+              enrolledStudents.map((item, index) => (
               <tr key={index} className="border-b border-gray-500/20">
                 <td className="px-4 py-3 text-center hidden sm:table-cell">
                   {index + 1}
@@ -66,8 +67,13 @@ const StudentsEnrolled = () => {
                 <td className="px-4 py-3 hidden sm:table-cell">
                   {new Date(item.purchaseDate).toLocaleDateString()}
                 </td>
-              </tr>
-            ))}
+                </tr>
+              ))
+              ) : (
+                <tr className="border-b border-gray-500/20">
+                  <td className="px-4 py-3 text-center" colSpan={4}>No Students Enrolled</td>
+                </tr>
+            )}
           </tbody>
         </table>
       </div>

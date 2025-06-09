@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../../assets/assets";
+import { AppContext } from "../../context/AppContext";
 
 const Footer = () => {
+  const {navigate} = useContext(AppContext)
   return (
     <footer className="bg-gray-900 sm:px-10 md:px-16 px-8 text-left w-full mt-10">
       <div className="flex flex-col md:flex-row items-start w-full justify-between gap-10 md:gap-16 py-10 border-b border-white/30">
@@ -9,15 +11,18 @@ const Footer = () => {
           <img src={assets.logo_dark} className="w-28 lg:w-32" alt="logo" />
           <p className="mt-6 text-center md:text-left text-sm text-white/80">
             Learnix is a modern Learning Management System designed to make
-            online education simple, interactive, and accessible. Learnix empowers students and educators
-            to connect and grow — anytime, anywhere.
+            online education simple, interactive, and accessible. Learnix
+            empowers students and educators to connect and grow — anytime,
+            anywhere.
           </p>
         </div>
         <div className="flex flex-col md:items-start items-center md:border-none md:pt-0 border-t pt-4 border-white/80 w-full">
           <h2 className="font-semibold text-white mb-5">Company</h2>
           <ul className="flex md:flex-col w-full justify-center gap-4 md:justify-between md:gap-0 text-sm text-white/80 md:space-y-2">
             <li>
-              <a href="#">Home</a>
+              <a onClick={() => navigate("/")} href="">
+                Home
+              </a>
             </li>
             <li>
               <a href="#">About us</a>

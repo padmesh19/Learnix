@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import YouTube from "react-youtube";
-import Footer from "../../components/student/Footer";
 import Rating from "../../components/student/Rating";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -19,13 +18,14 @@ const Player = () => {
     userData,
     fetchUserEnrolledCourses,
   } = useContext(AppContext);
+  
   const { courseId } = useParams();
   const [courseData, setCourseData] = useState(null);
   const [openSections, setOpenSections] = useState({});
   const [playerData, setPlayerData] = useState(null);
   const [progressData, setProgressData] = useState(null);
   const [initialRating, setInitialRating] = useState(0);
-
+  
   const getCourseData = () => {
     enrolledCourses.map((course) => {
       if (course._id === courseId) {
@@ -212,6 +212,7 @@ const Player = () => {
           {playerData ? (
             <div>
               <YouTube
+                key={playerData.lectureUrl}
                 videoId={playerData.lectureUrl.split("/").pop()}
                 iframeClassName="w-full aspect-video"
               />

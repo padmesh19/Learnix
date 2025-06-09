@@ -209,7 +209,11 @@ const AddCourse = () => {
         <div>
           {chapters.map((chapter, chapterIndex) => (
             <div key={chapterIndex} className="bg-white border rounded-lg mb-4">
-              <div className={`flex justify-between items-center p-4 ${!chapter.collapsed ? 'border-b' : ''}`}>
+              <div
+                className={`flex justify-between items-center p-4 ${
+                  !chapter.collapsed ? "border-b" : ""
+                }`}
+              >
                 <div className="flex items-center">
                   <img
                     src={assets.dropdown_icon}
@@ -345,7 +349,7 @@ const AddCourse = () => {
                     onChange={(e) =>
                       setLectureDetails({
                         ...lectureDetails,
-                        isPreviewFree: e.target.value==="on" ? true : false,
+                        isPreviewFree: e.target.checked,
                       })
                     }
                   />

@@ -60,7 +60,7 @@ const MyEnrollments = () => {
       <div className="sm:px-10 md:px-16 md:pt-16 px-4 pt-10 flex-1">
         <h1 className="text-2xl font-semibold">My Enrollments</h1>
         <table className="md:table-auto table-fixed w-full overflow-hidden border border-gray-800 my-10">
-          <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left max-sm:hidden">
+          <thead className="text-gray-900 border-b border-gray-500/50 text-sm text-left max-sm:hidden">
             <tr>
               <th className="px-4 py-3 font-semibold truncate">Course</th>
               <th className="px-4 py-3 font-semibold truncate">Duration</th>
@@ -69,58 +69,68 @@ const MyEnrollments = () => {
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {enrolledCourses.map((course, index) => (
-              <tr
-                key={index}
-                className={`border-b ${
-                  enrolledCourses.length === index + 1
-                    ? "border-gray-500"
-                    : " border-gray-500/20"
-                }`}
-              >
-                <td className="md:px-4 pl-2 md:pl-4 py-3 flex  items-center space-x-3">
-                  <img
-                    src={course.courseThumbnail}
-                    alt=""
-                    className="w-14 sm:w-24 md:w-28"
-                  />
-                  <div className="flex-1">
-                    <p className="mb-1 max-sm:text-sm">{course.courseTitle}</p>
-                    <Line
-                      strokeWidth={2}
-                      percent={
-                        progressArray[index]
-                          ? (progressArray[index].lectureCompleted * 100) /
-                            progressArray[index].totalLectures
-                          : 0
-                      }
-                      className="bg-gray-300 rounded-full"
+            {enrolledCourses && enrolledCourses.length > 0 ? (
+              enrolledCourses.map((course, index) => (
+                <tr
+                  key={index}
+                  className={`border-b ${
+                    enrolledCourses.length === index + 1
+                      ? "border-gray-500"
+                      : " border-gray-500/50"
+                  }`}
+                >
+                  <td className="md:px-4 pl-2 md:pl-4 py-3 flex  items-center space-x-3">
+                    <img
+                      src={course.courseThumbnail}
+                      alt=""
+                      className="w-14 sm:w-24 md:w-28"
                     />
-                  </div>
-                </td>
-                <td className="px-4 py-3 max-sm:hidden">
-                  {calculateCourseDuration(course)}
-                </td>
-                <td className="px-4 py-3 max-sm:hidden">
-                  {progressArray[index] &&
-                    `${progressArray[index].lectureCompleted} / ${progressArray[index].totalLectures}`}{" "}
-                  <span>Lectures</span>
-                </td>
-                <td className="px-4 py-3 max-sm:text-right">
-                  <button
-                    onClick={() => navigate("/player/" + course._id)}
-                    className="px-3 sm:px-5 py-1.5 sm:py-2 bg-blue-600 max-sm:text-xs text-white"
-                  >
+                    <div className="flex-1">
+                      <p className="mb-1 max-sm:text-sm">
+                        {course.courseTitle}
+                      </p>
+                      <Line
+                        strokeWidth={2}
+                        percent={
+                          progressArray[index]
+                            ? (progressArray[index].lectureCompleted * 100) /
+                              progressArray[index].totalLectures
+                            : 0
+                        }
+                        className="bg-gray-300 rounded-full"
+                      />
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 max-sm:hidden">
+                    {calculateCourseDuration(course)}
+                  </td>
+                  <td className="px-4 py-3 max-sm:hidden">
                     {progressArray[index] &&
-                    progressArray[index].lectureCompleted /
-                      progressArray[index].totalLectures ===
-                      1
-                      ? "Completed"
-                      : "On Going"}
-                  </button>
+                      `${progressArray[index].lectureCompleted} / ${progressArray[index].totalLectures}`}{" "}
+                    <span>Lectures</span>
+                  </td>
+                  <td className="px-4 py-3 max-sm:text-right">
+                    <button
+                      onClick={() => navigate("/player/" + course._id)}
+                      className="px-3 sm:px-5 py-1.5 sm:py-2 bg-blue-600 max-sm:text-xs text-white"
+                    >
+                      {progressArray[index] &&
+                      progressArray[index].lectureCompleted /
+                        progressArray[index].totalLectures ===
+                        1
+                        ? "Completed"
+                        : "On Going"}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td className="px-4 py-3 text-center" colSpan={4}>
+                  You have No Enrolled Courses
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

@@ -39,6 +39,7 @@ import play_icon from './play_icon.svg'
 import blue_tick_icon from './blue_tick_icon.svg'
 import course_4 from './course_4.png'
 import profile_img from './profile_img.png'
+import Profile_image from "./Profile_image.jpg";
 import profile_img2 from './profile_img2.png'
 import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
@@ -59,6 +60,7 @@ export const assets = {
     course_4_thumbnail,
     star,
     star_blank,
+    Profile_image,
     profile_img_1,
     profile_img_2,
     profile_img_3,
@@ -102,27 +104,30 @@ export const dummyEducatorData = {
 }
 
 export const dummyTestimonial = [
-    {
-        name: 'Donald Jackman',
-        role: 'SWE 1 @ Amazon',
-        image: assets.profile_img_1,
-        rating: 5,
-        feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
-    },
-    {
-        name: 'Richard Nelson',
-        role: 'SWE 2 @ Samsung',
-        image: assets.profile_img_2,
-        rating: 4,
-        feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
-    },
-    {
-        name: 'James Washington',
-        role: 'SWE 2 @ Google',
-        image: assets.profile_img_3,
-        rating: 4.5,
-        feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
-    },
+  {
+    name: "Donald Jackman",
+    role: "Student @ IITM",
+    image: assets.profile_img_1,
+    rating: 5,
+    feedback:
+      "Learnix made learning so easy and fun! The interface is clean, and I can access my courses anytime — even from my phone. I finally enjoy studying!",
+  },
+  {
+    name: "Padmesh",
+    role: "Educator @ Learnix",
+    image: assets.Profile_image,
+    rating: 5,
+    feedback:
+      "As an instructor, Learnix gave me the tools to organize my content, track student progress, and interact better. It's intuitive and efficient.",
+  },
+  {
+    name: "James Washington",
+    role: "SWE 2 @ Google",
+    image: assets.profile_img_3,
+    rating: 4.5,
+    feedback:
+      "I use Learnix to upskill in my free time. The flexibility and quality of content are top-notch. It's perfect for busy schedules!",
+  },
 ];
 
 export const dummyDashboardData = {

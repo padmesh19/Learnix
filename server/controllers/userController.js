@@ -44,16 +44,26 @@ export const purchaseCourse = async (req, res) => {
       return res.json({ success: false, message: "Data Not Found" });
     }
 
-    const purchaseData = {
-      courseId: courseData._id,
+    const existingPurchase = await Purchase.findOne({
       userId: userData._id,
-      amount: (
-        courseData.coursePrice -
-        (courseData.discount * courseData.coursePrice) / 100
-      ).toFixed(2),
-    };
+      courseId: courseData._id,
+      status: { $in: ["pending", "failed"] },
+    });
 
-    console.log(userData);
+    let purchaseData;
+
+    if (existingPurchase) {
+      purchaseData = existingPurchase;
+    } else {
+      purchaseData = {
+        courseId: courseData._id,
+        userId: userData._id,
+        amount: (
+          courseData.coursePrice -
+          (courseData.discount * courseData.coursePrice) / 100
+        ).toFixed(2),
+      };
+    }
 
     const newPurchase = await Purchase.create(purchaseData);
 
