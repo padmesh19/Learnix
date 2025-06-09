@@ -169,7 +169,7 @@ const AddCourse = () => {
 
           <div className="flex md:flex-row flex-col items-center gap-3">
             <p>Course Thumbnail</p>
-            <label htmlFor="thumbnailImage" className="flex items-center gap-3">
+            <label htmlFor="thumbnailImage" className="flex items-center cursor-pointer gap-3">
               <img
                 src={assets.file_upload_icon}
                 alt=""
@@ -358,7 +358,7 @@ const AddCourse = () => {
                 <button
                   onClick={addLecture}
                   type="button"
-                  className="w-full bg-blue-400 text-white px-4 py-2 rounded"
+                  className="w-full cursor-pointer bg-blue-400 text-white px-4 py-2 rounded"
                 >
                   Add
                 </button>
@@ -376,7 +376,7 @@ const AddCourse = () => {
 
         <button
           type="submit"
-          className="bg-black text-white w-max py-2.5 px-8 rounded my-4"
+          className="bg-black cursor-pointer text-white w-max py-2.5 px-8 rounded my-4"
         >
           ADD
         </button>

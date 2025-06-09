@@ -243,7 +243,7 @@ const CourseDetails = () => {
               />
 
               <p className="text-red-500">
-                <span className="font-medium">5days</span> left at this price!
+                <span className="font-medium">5 days</span> left at this price!
               </p>
             </div>
             <div className="flex gap-3 items-center pt-2">
@@ -281,7 +281,7 @@ const CourseDetails = () => {
             </div>
             <button
               onClick={enrollCourse}
-              className="md:mt-6 mt-4 w-full py-3 rounded bg-blue-600 text-white font-medium"
+              className="md:mt-6 mt-4 w-full cursor-pointer py-3 rounded bg-blue-600 text-white font-medium"
             >
               {isAlreadyEnrolled ? "Already Enrolled" : "Enroll Now"}
             </button>

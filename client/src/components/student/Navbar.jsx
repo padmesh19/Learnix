@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           {user && (
             <>
-              <button onClick={becomeEducator}>
+              <button onClick={becomeEducator} className="cursor-pointer">
                 {isEducator ? "Educator Dashboard" : "Become Educator"}
               </button>
               | <Link to="/my-enrollments">My Enrollments</Link>

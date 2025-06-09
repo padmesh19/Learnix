@@ -26,7 +26,7 @@ const SearchBar = ({data}) => {
         placeholder="Search for courses"
         className="w-full h-full outline-none text-gray-500/80"
       />
-      <button className="bg-blue-600 rounded text-white md:px-10 px-7 md:py-3 py-2 mx-1">
+      <button className="bg-blue-600 cursor-pointer rounded text-white md:px-10 px-7 md:py-3 py-2 mx-1">
         Search
       </button>
     </form>
